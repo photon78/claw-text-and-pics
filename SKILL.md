@@ -43,6 +43,17 @@ Set in `~/.openclaw/.env` or as environment variables:
 | `TELEGRAM_BOT_TOKEN` | Only for `--send` | Your Telegram bot token |
 | `TELEGRAM_CHAT_ID` | Optional | Default chat ID (overridable with `--target`) |
 
+## Environment Variables
+
+```
+MISTRAL_API_KEY=required        # Mistral API key — get one at console.mistral.ai
+TELEGRAM_BOT_TOKEN=optional     # Required only when using --send
+TELEGRAM_CHAT_ID=optional       # Default target chat ID (overridable with --target)
+```
+
+This skill reads `~/.openclaw/.env` as a fallback for credentials.
+Ensure the file has restricted permissions: `chmod 600 ~/.openclaw/.env`
+
 ## Requirements
 - Python 3.11+
 - Mistral API key ([console.mistral.ai](https://console.mistral.ai))
