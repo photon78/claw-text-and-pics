@@ -115,6 +115,28 @@ Add to your agent's `TOOLS.md`:
 
 ---
 
+## FAQ
+
+**Why doesn't image extraction work with URLs?**
+
+Mistral returns bounding-box coordinates for embedded images, but the actual pixel data isn't included in the API response. To crop images, `claw-text-and-pics` needs access to the original file. With a URL input, the original file isn't available locally — so text extraction works fine, but `--extract-images` is skipped.
+
+**Workaround:** Download the file first, then pass the local path:
+```bash
+wget https://example.com/document.pdf
+python3 ocr.py --input document.pdf --extract-images --output-dir ./images/
+```
+
+**Does it work on Raspberry Pi (ARM64)?**
+
+Yes — no native binaries required. Pure Python + Mistral API.
+
+**Do I need Pillow for text extraction?**
+
+No. Pillow is only needed when using `--extract-images`. Text-only extraction works with Python stdlib.
+
+---
+
 ## Built with
 
 - [Mistral OCR API](https://docs.mistral.ai/capabilities/document/) — document understanding
