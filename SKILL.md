@@ -1,3 +1,16 @@
+---
+name: claw-text-and-pics
+description: Extract text and embedded images from scanned documents, PDFs, and photos via Mistral OCR API. Use when reading receipts, invoices, contracts, handwritten notes, or any image or PDF containing text.
+license: MIT
+compatibility: Requires Mistral API key. Optional Pillow (pip install pillow) for image extraction. Python 3.11+.
+metadata:
+  author: photon78
+  version: "1.0.0"
+  env_required: MISTRAL_API_KEY
+  env_optional: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+  config_file: ~/.openclaw/.env (fallback for credentials)
+---
+
 # claw-text-and-pics
 
 **Extract text and images from documents via Mistral OCR**
