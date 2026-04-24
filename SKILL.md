@@ -8,7 +8,6 @@ metadata:
   version: "1.0.0"
   env_required: MISTRAL_API_KEY
   env_optional: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
-  config_file: ~/.openclaw/.env (fallback for credentials)
 ---
 
 # claw-text-and-pics

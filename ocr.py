@@ -33,18 +33,6 @@ API_KEY = os.environ.get("MISTRAL_API_KEY", "")
 API_URL = "https://api.mistral.ai/v1/ocr"
 
 
-def _load_env_file(env_path: Path) -> dict:
-    """Parse a simple KEY=VALUE .env file."""
-    env = {}
-    if env_path.exists():
-        for line in env_path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                key, _, val = line.partition("=")
-                env[key.strip()] = val.strip().strip('"').strip("'")
-    return env
-
-
 def encode_file(path: str) -> str:
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
@@ -263,10 +251,9 @@ if __name__ == "__main__":
                         help="Print raw API response")
     args = parser.parse_args()
 
-    # Resolve Telegram config from env if not provided
-    env_file = _load_env_file(Path.home() / ".openclaw" / ".env")
-    target = args.target or os.environ.get("TELEGRAM_CHAT_ID") or env_file.get("TELEGRAM_CHAT_ID")
-    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN") or env_file.get("TELEGRAM_BOT_TOKEN")
+    # Resolve Telegram config from environment variables
+    target = args.target or os.environ.get("TELEGRAM_CHAT_ID")
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
 
     if args.send:
         if not target:
