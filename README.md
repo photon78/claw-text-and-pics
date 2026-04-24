@@ -39,13 +39,15 @@ cd claw-text-and-pics
 pip install pillow
 ```
 
-Add to your `~/.openclaw/.env`:
+Export as environment variables (e.g. in your shell profile or OpenClaw env config):
 
+```bash
+export MISTRAL_API_KEY=your_key_here
+export TELEGRAM_BOT_TOKEN=your_bot_token   # only needed for --send
+export TELEGRAM_CHAT_ID=123456789          # optional default chat ID
 ```
-MISTRAL_API_KEY=your_key_here
-TELEGRAM_BOT_TOKEN=your_bot_token   # only needed for --send
-TELEGRAM_CHAT_ID=123456789          # optional default chat ID
-```
+
+OpenClaw users: set these in your agent's environment via `openclaw.json` or the OpenClaw plugin config.
 
 ---
 
